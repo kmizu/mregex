@@ -1,2 +1,3 @@
-# min_regex_parser
-Minimal Regex Parser in Scala
+# mregex
+
+A Minimal Regex Matcher in Scala.  
