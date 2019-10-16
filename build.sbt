@@ -54,14 +54,7 @@ pomExtra := (
     </developers>
   )
 
-publishTo := {
-  val v = version.value
-  val nexus = "https://oss.sonatype.org/"
-  if (v.endsWith("-SNAPSHOT"))
-    Some("snapshots" at nexus+"content/repositories/snapshots")
-  else
-    Some("releases" at nexus+"service/local/staging/deploy/maven2")
-}
+publishTo := sonatypePublishToBundle.value
 
 credentials ++= {
   val sonatype = ("Sonatype Nexus Repository Manager", "oss.sonatype.org")
