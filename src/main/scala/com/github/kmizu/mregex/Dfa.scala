@@ -72,7 +72,7 @@ class Dfa(val table: Array[Array[Int]], val start: Int, val finals: Set[Int]) {
       w.printf("%0" + maxDigit + "d: ", new Integer(i))
       for(j <- ASCII_PRINTABLE_START to ASCII_PRINTABLE_FINAL) {
         if (table(i)(j) != -1) {
-          w.printf("%c -> %0" + maxDigit + "d ", j.toChar, new Integer(table(i)(j)))
+          w.printf("%c -> %0" + maxDigit + "d ", j.toChar:Character, new Integer(table(i)(j)))
           w.flush()
         }
         w.flush()
