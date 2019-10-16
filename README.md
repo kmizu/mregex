@@ -1,8 +1,20 @@
 # mregex
 
+[![Gitter](https://badges.gitter.im/kmizu/mregex.svg)](https://gitter.im/kmizu/mregex?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/kmizu/mregex.png?branch=master)](https://travis-ci.org/kmizu/mregex)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.kmizu/mregex_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.kmizu/mregex_2.13)
+[![Scaladoc](http://javadoc-badge.appspot.com/com.github.kmizu/mregex_2.13.svg?label=scaladoc)](http://javadoc-badge.appspot.com/com.github.kmizu/mregex_2.13/index.html#com.github.kmizu.mregex.package)
+[![Reference Status](https://www.versioneye.com/java/com.github.kmizu:mregex_2.13/reference_badge.svg?style=flat)](https://www.versioneye.com/java/com.github.kmizu:mregex_2.13/references)
+
 A minimal regex matcher in Scala.  This repository is mainly aimed at learning implementations of regular expressions.
 
 ## Usage
+
+Add the following lines to your build.sbt file:
+
+```scala
+libraryDependencies += "com.github.kmizu" %% "mregex" % "0.1.0"
+```
 
 ```scala
 import com.github.kmizu.mregex._
