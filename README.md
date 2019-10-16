@@ -1,6 +1,6 @@
 # mregex
 
-A minimal eegex matcher in Scala.  This repository is mainly aimed at learning implementations of regular expressions.
+A minimal regex matcher in Scala.  This repository is mainly aimed at learning implementations of regular expressions.
 
 ## Usage
 
