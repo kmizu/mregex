@@ -7,13 +7,13 @@ import com.github.kmizu.mregex.Ast.{Alphabet, Choice, Concat, Empty, Exp, Kleene
 import scala.util.parsing.combinator.Parsers
 import scala.util.parsing.input.{CharSequenceReader, StreamReader}
 
-case class MRegex(pattern: String, mode: MatchingMode = MatchingMode.Dfa) {
+case class MRegex(pattern: String, strategy: MatchingStrategy = MatchingStrategy.Dfa) {
   private[this] lazy val automaton: Union[Nfa, Dfa] = {
     val exp = MRegex.Parser.parse(pattern)
     val nfa = MRegex.Compiler.compile(exp)
-    mode match {
-      case MatchingMode.Nfa => Union.Left(nfa)
-      case MatchingMode.Dfa => Union.Right(Nfa.Compiler.compile(nfa))
+    strategy match {
+      case MatchingStrategy.Nfa => Union.Left(nfa)
+      case MatchingStrategy.Dfa => Union.Right(Nfa.Compiler.compile(nfa))
     }
   }
   def matches(string: String): Boolean = automaton match {
