@@ -3,7 +3,7 @@ package com.github.kmizu.mregex
 import java.io.{PrintWriter, StringWriter}
 
 class Dfa(val table: Array[Array[Int]], val start: Int, val finals: Set[Int]) {
-  import NfaCompiler.NumberOfAlphabets
+  import Nfa.Compiler.NumberOfAlphabets
   def and(rhs: Dfa): Dfa = {
     val newTable = Array.ofDim[Int](table.length * rhs.table.length, NumberOfAlphabets)
     val newStart = rhs.table.length * start + rhs.start

@@ -2,12 +2,12 @@ package com.github.kmizu.mregex
 
 import org.scalatest._
 import Ast._
-import RegexParser._
+import MRegex.Parser._
 
 import scala.collection.mutable.Buffer
 
-class RegexParserSpec extends FlatSpec with Matchers {
-  "RegexParser" should "parses the following input strings successfully" in {
+class MRegexParserSpec extends FlatSpec with Matchers {
+  "MRegex.Parser" should "parses the following input strings successfully" in {
     parse("a") should be (Alphabet('a'))
     parse("(a)") should be (Alphabet('a'))
     parse("ab") should be (Concat(Alphabet('a'), Alphabet('b')))
@@ -16,8 +16,8 @@ class RegexParserSpec extends FlatSpec with Matchers {
     parse(" *") should be (KleeneStar(Alphabet(' ')))
   }
 
-  "RegexCompiler" should "compiles the following pattern and matches the string" in {
-   import RegexCompiler._
+  "MRegex.Compiler" should "compiles the following pattern and matches the string" in {
+   import MRegex.Compiler._
     matches(parse("a"), "a") should be (true)
     matches(parse("a"), "b") should be (false)
     matches(parse("a|b"), "a") should be (true)
@@ -30,14 +30,14 @@ class RegexParserSpec extends FlatSpec with Matchers {
     matches(parse("(a|b)*"), "abababc") should be (false)
   }
 
-  "Subset construction algorithm" should "translates an NFA to the corresponding DFA" in {
+  "Nfa.Compiler" should "translates an NFA to the corresponding DFA using subset construction algorithm" in {
     val nfa = Nfa(0, 3, Buffer(
       Nfa.State(transitions = Map('a' -> Set(1))),
       Nfa.State(epsilonTransitions = Set(2), transitions = Map('a' -> Set(2))),
       Nfa.State(transitions = Map('b' -> Set(3))),
       Nfa.State()
     ))
-    val dfa = NfaCompiler.compile(nfa)
+    val dfa = Nfa.Compiler.compile(nfa)
     dfa.matches("aab") should be (true)
     dfa.matches("ab") should be (true)
     dfa.matches("abc") should be (false)
